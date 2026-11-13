@@ -480,6 +480,8 @@ img.espejo,.esc-escena .persona-img.espejo{transform:scaleX(-1)}
   .ap-ins{grid-template-columns:1fr}.ap-icono-grande{width:180px;height:180px}.ap-icono-grande .icono{width:110px;height:110px}
 }
 @media (prefers-reduced-motion:reduce){.apr-inner{transition:none}}
+.esc-video h3{font-size:32px;margin-bottom:10px;color:var(--c)}
+.esc-video .video-grid{grid-template-columns:minmax(0,.7fr) minmax(0,1.6fr)}
 </style>
 </head>
 <body>
@@ -1129,6 +1131,9 @@ const FUTUROS = [
  {
   "id": 1,
   "color": "var(--f1)",
+  "video": "video/escenario-1.mp4",
+  "poster": "video/escenario-1.jpg",
+  "videoDur": "1:36",
   "corto": "La red cooperativa",
   "titulo": "La red cooperativa convierte datos en acceso y confianza",
   "bajada": "Los datos productivos dejan de pertenecer a quien los recoge y pasan a gobernarse de forma colectiva. Cooperativas, banca de desarrollo, compradores y supervisores pactan reglas comunes de portabilidad, seguros de fallo y reparto de beneficios. El valor surge cuando un productor pequeño puede usar su historial para acceder a crédito, seguros y mejores precios, y llevarlo consigo si cambia de socio.",
@@ -1762,7 +1767,7 @@ function pintarPuertas() {
   $("#puertas").innerHTML = FUTUROS.map(f => `
     <div class="puerta-env sombra" style="--c:${f.color}"><a class="puerta torn" href="#escenario-${f.id}">
       <div class="foto"><img src="images/esc-${f.id}.svg" alt=""></div>
-      <span class="etq">Escenario ${f.id}</span>
+      <span class="etq">Escenario ${f.id}${f.video ? " · con video" : ""}</span>
       <h3>${esc(f.titulo)}</h3>
       <p>${esc(f.bajada.split(". ")[0])}.</p>
       <span class="persona"><span>Un día con ${f.persona}</span><span class="entrar">Entrar al escenario</span></span>
@@ -1793,6 +1798,14 @@ function abrirFuturo(id) {
         <img class="persona-img ${f.imgClase}" src="${f.img}" alt="">
       </div>
     </div></section>
+
+    ${f.video ? `<section class="esc-sec esc-video"><div class="envoltura"><div class="video-grid">
+      <div><span class="kicker" style="color:var(--c)">Video · ${esc(f.videoDur)}</span><h3>Mira el escenario</h3>
+      <p class="intro" style="margin-bottom:0">Un recorrido en 3D por el escenario: del problema al pacto, con Rosa y las señales tempranas.</p></div>
+      <figure class="marco-video"><span class="cinta"></span>
+        <video controls preload="metadata" playsinline poster="${f.poster}"><source src="${f.video}" type="video/mp4">Tu navegador no puede reproducir este video.</video>
+        <figcaption>Escenario ${f.id} · ${esc(f.corto)}</figcaption></figure>
+    </div></div></section>` : ""}
 
     <section class="esc-sec"><div class="envoltura">
       <div class="dia-cab"><img class="${f.imgClase}" src="${f.img}" alt=""><h3 style="font-size:32px;color:var(--c)">Un día con ${f.persona}</h3></div>
