@@ -14,7 +14,7 @@ Abre `index.html` en el navegador, o activa GitHub Pages sobre la rama `main` (c
 ## Estructura
 - `index.html`: la página (estilos, datos y código en un solo archivo).
 - `images/`: ilustraciones de los escenarios (bocetos provisionales) y personajes.
-- `video/`: video panorama y su imagen de portada.
+- `video/`: video panorama, video 3D del escenario 1 y sus imágenes de portada.
 
 ## Pendientes
 - Datos clave y scan cards: por completar en el radar.
