@@ -398,6 +398,88 @@ body.revisar .leyenda-rev{display:flex}
 .resultado-choque strong{color:var(--c)}
 img.espejo,.esc-escena .persona-img.espejo{transform:scaleX(-1)}
 @media (max-width:860px){.insights,.tendencias{grid-template-columns:1fr}.tendencias::before{display:none}}
+
+/* Tarjetas de aprendizajes (giran) */
+.apr-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 22px}
+.apr-card{perspective:1400px;min-height:410px}
+.apr-card:nth-child(4n+1){transform:rotate(-1deg)}.apr-card:nth-child(4n+2){transform:rotate(.8deg)}.apr-card:nth-child(4n+3){transform:rotate(-.5deg)}.apr-card:nth-child(4n){transform:rotate(1deg)}
+.apr-inner{position:relative;height:100%;min-height:410px;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,.7,.2,1)}
+.apr-card.girada .apr-inner{transform:rotateY(180deg)}
+.apr-cara{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;padding:30px 22px 22px}
+.apr-frente{filter:drop-shadow(4px 8px 10px rgba(40,30,20,.16))}
+.apr-frente .cinta{top:-10px;left:50%;margin-left:-48px}
+.apr-top{display:flex;justify-content:space-between;align-items:flex-start}
+.apr-top .icono{margin:0}
+.apr-n{font-size:64px;font-weight:800;line-height:.8;color:var(--azul);opacity:.18;letter-spacing:-.05em}
+.apr-vg{font-size:13px;font-weight:800;color:var(--azul);margin-top:14px}
+.apr-frente h3{font-size:22px;line-height:1.18;margin:6px 0 8px;color:var(--tinta)}
+.apr-sub{font-size:14px;color:var(--gris1)}
+.apr-acc{margin-top:auto;padding-top:18px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.apr-girar{border:2px solid var(--azul);background:none;color:var(--azul);border-radius:99px;padding:7px 14px;font-weight:700;font-size:14px}
+.apr-ir{background:var(--azul);color:#fff;border-radius:99px;padding:9px 15px;font-weight:700;font-size:14px;text-decoration:none}
+.apr-ir.claro{background:var(--amarillo);color:var(--azul-osc)}
+.apr-dorso{transform:rotateY(180deg);background:var(--azul);color:#fff;border-radius:6px;box-shadow:4px 8px 14px rgba(40,30,20,.2)}
+.apr-dorso .apr-girar{border-color:#fff;color:#fff}
+.apr-et{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amarillo)}
+.apr-dorso p{font-size:14.5px;line-height:1.42;margin:4px 0 0}
+.apr-dorso p.hacia{font-weight:700}
+.apr-flecha{font-size:26px;font-weight:800;color:var(--amarillo);margin:8px 0}
+.apr-card:hover .apr-frente{filter:drop-shadow(6px 14px 14px rgba(40,30,20,.22))}
+.fz-esc a{display:block;text-align:left;border:2px solid var(--gris2);background:var(--blanco);border-radius:16px;padding:18px;text-decoration:none;color:var(--tinta)}
+.fz-esc a:hover{border-color:var(--c)}
+.fz-esc .fz-n{display:block;font-size:13px;font-weight:800;color:var(--c);margin-bottom:4px}
+.fz-esc strong{display:block;font-size:18px;margin-bottom:6px}
+.fz-esc span{font-size:14.5px;color:var(--gris1)}
+/* Página de aprendizaje */
+.ap-hero .ap-sub{font-size:18px;font-weight:700;color:var(--amarillo);margin:-6px 0 16px}
+.ap-hero .ap-intro{font-size:19px;font-weight:500;line-height:1.6;max-width:62ch}
+.ap-icono-grande{position:relative;justify-self:center;width:260px;height:260px;background:#fff;display:grid;place-items:center;transform:rotate(3deg);box-shadow:6px 12px 24px rgba(0,0,30,.3)}
+.ap-icono-grande .cinta{top:-12px;left:50%;margin-left:-48px}
+.ap-icono-grande .icono{width:150px;height:150px;border-radius:36px;margin:0}
+.ap-icono-grande .icono svg{width:90px;height:90px}
+.ap-num{position:absolute;right:16px;bottom:6px;font-size:72px;font-weight:800;color:var(--azul);opacity:.2}
+.ap-cambio{display:grid;grid-template-columns:1fr 200px 1fr;gap:20px;align-items:center}
+.ap-lado{padding:30px 26px;transition:opacity .2s,transform .2s;filter:drop-shadow(4px 8px 10px rgba(40,30,20,.14))}
+.ap-lado span{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--azul)}
+.ap-lado p{font-size:20px;font-weight:600;line-height:1.45;margin-top:8px}
+.ap-hacia p{color:var(--azul)}
+.ap-medio input{width:100%}
+.ap-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.ap-tabs button{text-align:left;border:2px solid var(--gris2);background:#fff;border-radius:16px;padding:16px 18px;font-weight:700;font-size:16px;line-height:1.3;color:var(--tinta)}
+.ap-tabs button span{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--azul);margin-bottom:6px}
+.ap-tabs button[aria-selected="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.ap-tabs button[aria-selected="true"] span{color:var(--amarillo)}
+.ap-ins{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;align-items:start}
+.ap-ins h4{font-size:28px;color:var(--azul);margin-bottom:10px;line-height:1.2}
+.ap-ins .bajada{font-size:19px;font-weight:600;color:var(--tinta);margin-bottom:16px}
+.ap-ins-txt>p:last-child{font-size:17px;line-height:1.65;color:var(--gris1)}
+.ap-ins blockquote{margin:0 0 18px;padding:18px 20px;background:var(--amarillo);font-weight:800;font-size:19px;line-height:1.35;transform:rotate(-1deg);box-shadow:3px 5px 0 rgba(0,0,40,.12)}
+.ap-linea{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
+.ap-linea::before{content:"";position:absolute;left:0;right:0;top:22px;height:4px;background:var(--gris2);border-radius:4px}
+.ap-hito{position:relative;width:100%;text-align:left;border:0;background:none;padding:0 6px 0 0}
+.ap-hito .hz{position:relative;z-index:1;display:inline-block;background:#fff;color:var(--azul);border:2px solid var(--azul);border-radius:99px;padding:8px 14px;font-weight:800;font-size:14px}
+.ap-hito.on .hz{background:var(--azul);color:#fff}
+.ap-hito strong{display:block;margin-top:12px;font-size:16px;line-height:1.3}
+.ap-hito[aria-expanded="true"] strong{color:var(--azul)}
+.ap-ten{padding:30px 28px;filter:drop-shadow(4px 8px 10px rgba(40,30,20,.14))}
+.ap-ten .hz{display:inline-block;background:var(--azul);color:#fff;font-weight:800;font-size:13px;border-radius:99px;padding:5px 12px}
+.ap-ten h4{font-size:24px;margin:12px 0 10px}
+.ap-ten p{font-size:17px;line-height:1.6;max-width:70ch;margin-bottom:14px}
+.notas{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.nota{background:var(--amarillo);padding:26px 22px;font-weight:700;font-size:19px;line-height:1.35;transform:rotate(var(--r));box-shadow:4px 8px 0 rgba(0,0,40,.1);min-height:150px}
+.ap-escs{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.ap-esc{display:block;background:#fff;padding:12px 12px 18px;text-decoration:none;color:var(--tinta);box-shadow:4px 8px 16px rgba(40,30,20,.15);transition:transform .2s}
+.ap-esc:hover{transform:translateY(-3px) rotate(-1deg)}
+.ap-esc img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.ap-esc span{display:block;margin-top:10px;font-size:13px;font-weight:800;color:var(--c)}
+.ap-esc strong{display:block;font-size:16px;line-height:1.3;margin-top:4px}
+@media (max-width:1100px){.apr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){
+  .apr-grid{grid-template-columns:1fr}.apr-card{min-height:340px}.apr-inner{min-height:340px}
+  .ap-cambio{grid-template-columns:1fr}.ap-tabs,.ap-linea,.notas{grid-template-columns:1fr}.ap-linea::before{display:none}
+  .ap-ins{grid-template-columns:1fr}.ap-icono-grande{width:180px;height:180px}.ap-icono-grande .icono{width:110px;height:110px}
+}
+@media (prefers-reduced-motion:reduce){.apr-inner{transition:none}}
 </style>
 </head>
 <body>
@@ -426,7 +508,7 @@ img.espejo,.esc-escena .persona-img.espejo{transform:scaleX(-1)}
         <p class="bajada">Rastreamos señales de cambio en Fintech, Agrotech y modelos de negocio. Las organizamos en 8 aprendizajes, con 24 insights y 24 tendencias; las combinamos en 16 mundos plausibles y de ahí salen 4 escenarios hacia 2031. No buscamos adivinar lo que va a pasar: queremos ensayar hoy cómo responderíamos.</p>
         <div class="pildoras"><span class="pildora">Fintech</span><span class="pildora">Agrotech</span><span class="pildora">Modelos de negocio</span><span class="pildora">8 aprendizajes</span><span class="pildora">24 insights</span><span class="pildora">24 tendencias</span><span class="pildora">16 mundos</span><span class="pildora">4 escenarios</span></div>
         <div class="acciones">
-          <a class="btn btn-amarillo" href="#mapa">Recorrer el mapa</a>
+          <a class="btn btn-amarillo" href="#aprendizajes">Explorar los aprendizajes</a>
           <a class="btn btn-borde" href="#video">Ver el video (1:25)</a>
         </div>
       </div>
@@ -468,26 +550,12 @@ img.espejo,.esc-escena .persona-img.espejo{transform:scaleX(-1)}
   </div>
 </section>
 
-<section class="mapeo" id="mapa">
-  <div class="envoltura">
-    <div class="cab">
-      <h2>Así construimos el mapa</h2>
-      <p>El foresight va de lo amplio a lo concreto: de muchas señales sueltas a pocas historias que se pueden vivir. Puedes recorrerlo en orden o saltar a lo que te interese.</p>
-    </div>
-    <ol class="embudo">
-      <li class="sombra"><a class="torn" href="#aprendizajes"><span class="cinta"></span><span class="cifra">3</span><h3>Radares trimestrales</h3><p>Las señales de 2026 de Fintech, Agrotech e innovación de modelos de negocio (BMI).</p></a></li>
-      <li class="sombra"><a class="torn" href="#aprendizajes"><span class="cinta"></span><span class="cifra">8</span><h3>Aprendizajes</h3><p>Cada uno interpreta un vector global de cambio, con 3 insights y 3 tendencias.</p><span class="ir">Ver los aprendizajes</span></a></li>
-      <li class="sombra"><a class="torn" href="#laboratorio"><span class="cinta"></span><span class="cifra">16</span><h3>Mundos plausibles</h3><p>Combinamos vectores que avanzan y que se quedan, y miramos qué coalición gana en cada caso.</p><span class="ir">Abrir el laboratorio</span></a></li>
-      <li class="sombra"><a class="torn" href="#escenarios"><span class="cinta"></span><span class="cifra">4</span><h3>Escenarios de futuro</h3><p>Historias completas, con personas, fechas y decisiones, para vivir antes de que lleguen.</p><span class="ir">Entrar a los escenarios</span></a></li>
-    </ol>
-  </div>
-</section>
 
 <section class="seccion" id="aprendizajes">
   <div class="envoltura">
     <div class="cabeza">
       <div><span class="kicker">Paso 1 · Aprendizajes</span><h2>Ocho aprendizajes sobre cómo se transforman el dinero, el campo y la empresa</h2></div>
-      <p>Cada aprendizaje interpreta una transición estructural: de dónde viene el sistema y hacia dónde va. Arrastra el control para ver el cambio y abre cada uno para leer sus 3 insights y sus 3 tendencias.</p>
+      <p>Cada aprendizaje interpreta una transición estructural: de dónde viene el sistema y hacia dónde va. Gira cada tarjeta para ver qué cambia, y entra para leer sus 3 insights y sus 3 tendencias.</p>
     </div>
     <div id="lista-fuerzas"></div>
   </div>
@@ -536,6 +604,20 @@ img.espejo,.esc-escena .persona-img.espejo{transform:scaleX(-1)}
         <small id="estado-copia">Tus respuestas se guardan solo en este navegador.</small>
       </div>
     </div></div>
+  </div>
+</section>
+<section class="mapeo" id="mapa" style="padding:90px 0 90px">
+  <div class="envoltura">
+    <div class="cab">
+      <h2>Así construimos el mapa</h2>
+      <p>El foresight va de lo amplio a lo concreto: de muchas señales sueltas a pocas historias que se pueden vivir. Puedes recorrerlo en orden o saltar a lo que te interese.</p>
+    </div>
+    <ol class="embudo">
+      <li class="sombra"><a class="torn" href="#aprendizajes"><span class="cinta"></span><span class="cifra">3</span><h3>Radares trimestrales</h3><p>Las señales de 2026 de Fintech, Agrotech e innovación de modelos de negocio (BMI).</p></a></li>
+      <li class="sombra"><a class="torn" href="#aprendizajes"><span class="cinta"></span><span class="cifra">8</span><h3>Aprendizajes</h3><p>Cada uno interpreta un vector global de cambio, con 3 insights y 3 tendencias.</p><span class="ir">Ver los aprendizajes</span></a></li>
+      <li class="sombra"><a class="torn" href="#laboratorio"><span class="cinta"></span><span class="cifra">16</span><h3>Mundos plausibles</h3><p>Combinamos vectores que avanzan y que se quedan, y miramos qué coalición gana en cada caso.</p><span class="ir">Abrir el laboratorio</span></a></li>
+      <li class="sombra"><a class="torn" href="#escenarios"><span class="cinta"></span><span class="cifra">4</span><h3>Escenarios de futuro</h3><p>Historias completas, con personas, fechas y decisiones, para vivir antes de que lleguen.</p><span class="ir">Entrar a los escenarios</span></a></li>
+    </ol>
   </div>
 </section>
 </main>
@@ -1533,66 +1615,146 @@ function tendenciasHTML(f) {
     <p class="impl"><strong>Implicación para el ecosistema</strong>${esc(x.implicacion)}</p></li>`).join("")}</ol>`;
 }
 function pintarFuerzas() {
-  $("#lista-fuerzas").innerHTML = FUERZAS.map(f => `
-    <article class="fuerza" id="aprendizaje-${f.id}">
-      <div class="fuerza-fila">
-        <div>
-          ${icono(f.id)}
-          <span class="num">Aprendizaje ${f.id} · ${f.vg}</span>
+  $("#lista-fuerzas").innerHTML = `<div class="apr-grid">${FUERZAS.map(f => `
+    <article class="apr-card" id="ap-card-${f.id}">
+      <div class="apr-inner">
+        <div class="apr-cara apr-frente torn">
+          <span class="cinta"></span>
+          <div class="apr-top">${icono(f.id)}<span class="apr-n">${f.id}</span></div>
+          <span class="apr-vg">${f.vg}</span>
           <h3>${esc(f.nombre)}</h3>
-          <p class="tecnico">${esc(f.tecnico)}</p>
+          <p class="apr-sub">${esc(f.tecnico)}</p>
+          <div class="apr-acc">
+            <button class="apr-girar" data-girar="${f.id}" aria-label="Ver qué cambia en: ${esc(f.nombre)}">¿Qué cambia?</button>
+            <a class="apr-ir" href="#aprendizaje-${f.id}">Ver insights</a>
+          </div>
         </div>
-        <div class="cambio">
-          <div class="textos">
-            <p class="t-hoy">${esc(f.hoy)}</p>
-            <p class="t-man" style="opacity:0" aria-hidden="true">${esc(f.manana)}</p>
+        <div class="apr-cara apr-dorso">
+          <span class="apr-et">De</span><p>${esc(f.hoy)}</p>
+          <span class="apr-flecha" aria-hidden="true">↓</span>
+          <span class="apr-et">Hacia</span><p class="hacia">${esc(f.manana)}</p>
+          <div class="apr-acc">
+            <button class="apr-girar" data-girar="${f.id}" aria-label="Volver al frente">Volver</button>
+            <a class="apr-ir claro" href="#aprendizaje-${f.id}">Ver insights y tendencias</a>
           </div>
-          <div class="deslizador">
-            <button class="activo" data-ir="0">De</button>
-            <input type="range" min="0" max="100" value="0" aria-label="${esc(f.nombre)}: de dónde viene a hacia dónde va" aria-valuetext="De">
-            <button data-ir="100">Hacia</button>
-          </div>
-          <button class="abrir" aria-expanded="false" aria-controls="det-${f.id}">Ver los 3 insights y las 3 tendencias</button>
         </div>
       </div>
-      <div class="detalle" id="det-${f.id}" hidden>
-        <p class="intro-apr">${esc(f.intro)}</p>
-        <h4 class="sub-det">Insights</h4>
-        <div class="insights">${insightsHTML(f)}</div>
-        <h4 class="sub-det">Tendencias</h4>
-        ${tendenciasHTML(f)}
-        <div class="preguntas"><h4 class="sub-det">Preguntas de discusión</h4><ul>${f.preguntas.map(q => `<li>${esc(q)}</li>`).join("")}</ul></div>
-        <div class="quienes"><span class="chips"><strong style="align-self:center">Aparece en:</strong> ${futurosDeFuerza(f.id).map(chipFuturo).join("") || "<span>ningún escenario lo tiene como protagonista</span>"}</span>
-          <span class="traz">Trazabilidad: ${esc(f.traz)}</span></div>
-      </div>
-    </article>`).join("");
-
-  $$(".fuerza").forEach(art => {
-    const r = $("input[type=range]", art), hoy = $(".t-hoy", art), man = $(".t-man", art);
-    const [bH, bM] = $$(".deslizador button", art);
-    const actualizar = () => {
-      const v = +r.value / 100;
-      hoy.style.opacity = Math.max(0, 1 - v * 2.2);
-      man.style.opacity = Math.max(0, v * 2.2 - 1.2);
-      hoy.setAttribute("aria-hidden", v > .5); man.setAttribute("aria-hidden", v <= .5);
-      r.style.setProperty("--v", r.value + "%");
-      r.setAttribute("aria-valuetext", v > .5 ? "Hacia" : "De");
-      bH.classList.toggle("activo", v <= .5); bM.classList.toggle("activo", v > .5);
-    };
-    r.addEventListener("input", actualizar);
-    $$("[data-ir]", art).forEach(b => b.addEventListener("click", () => animarA(r, +b.dataset.ir, actualizar)));
-    const ab = $(".abrir", art), det = $(".detalle", art);
-    ab.addEventListener("click", () => {
-      const abierto = det.hidden;
-      det.hidden = !abierto; ab.setAttribute("aria-expanded", abierto);
-      ab.textContent = abierto ? "Cerrar" : "Ver los 3 insights y las 3 tendencias";
-    });
+    </article>`).join("")}</div>`;
+  $("#lista-fuerzas").addEventListener("click", e => {
+    const b = e.target.closest("[data-girar]"); if (!b) return;
+    const card = $("#ap-card-" + b.dataset.girar); const on = !card.classList.contains("girada");
+    card.classList.toggle("girada", on);
+    const foco = $(on ? ".apr-dorso .apr-girar" : ".apr-frente .apr-girar", card);
+    setTimeout(() => foco && foco.focus({ preventScroll: true }), 50);
   });
 }
 function animarA(r, meta, cb) {
   const ini = +r.value, t0 = performance.now(), dur = matchMedia("(prefers-reduced-motion: reduce)").matches ? 1 : 500;
   const paso = t => { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); r.value = ini + (meta - ini) * e; cb(); if (p < 1) requestAnimationFrame(paso); };
   requestAnimationFrame(paso);
+}
+
+/* ---------- Página de detalle de un aprendizaje ---------- */
+function abrirAprendizaje(id) {
+  const f = fz(id); if (!f) return;
+  const v = $("#vista");
+  v.style.setProperty("--c", "var(--azul)");
+  const prev = fz(id - 1), sig = fz(id + 1), escs = futurosDeFuerza(id);
+  v.innerHTML = `
+    <div class="vista-barra"><div class="envoltura">
+      <button data-volver-apr>Volver a los aprendizajes</button>
+      <span class="t">Aprendizaje ${f.id}</span>
+      <nav>${FUERZAS.map(o => `<button data-ir-apr="${o.id}" ${o.id === id ? 'aria-current="true" style="background:rgba(255,255,255,.4)"' : ""}>${o.id}</button>`).join("")}</nav>
+    </div></div>
+
+    <section class="esc-hero ap-hero"><div class="envoltura"><div>
+      <span class="kicker">Aprendizaje ${f.id} · ${f.vg}</span>
+      <span class="tit"><h2 id="vista-titulo">${esc(f.nombre)}</h2></span>
+      <p class="ap-sub">${esc(f.tecnico)}</p>
+      <p class="gancho ap-intro">${esc(f.intro)}</p>
+      </div>
+      <div class="ap-icono-grande" aria-hidden="true"><span class="cinta"></span>${icono(f.id)}<span class="ap-num">${f.id}</span></div>
+    </div></section>
+
+    <section class="esc-sec"><div class="envoltura">
+      <h3>El cambio</h3>
+      <p class="intro">Arrastra el control para ir de dónde viene el sistema a hacia dónde va.</p>
+      <div class="ap-cambio">
+        <div class="ap-lado ap-de torn"><span>De</span><p>${esc(f.hoy)}</p></div>
+        <div class="ap-medio">
+          <input type="range" min="0" max="100" value="0" aria-label="De dónde viene a hacia dónde va" id="ap-rango">
+        </div>
+        <div class="ap-lado ap-hacia torn"><span>Hacia</span><p>${esc(f.manana)}</p></div>
+      </div>
+    </div></section>
+
+    <section class="esc-sec"><div class="envoltura">
+      <h3>Tres insights</h3>
+      <p class="intro">Lo que este aprendizaje revela. Elige uno.</p>
+      <div class="ap-tabs" role="tablist">${f.insights.map((x, i) => `<button role="tab" aria-selected="${i === 0}" data-ins="${i}"><span>Insight ${i + 1}</span>${esc(x.titulo)}</button>`).join("")}</div>
+      <div id="ap-ins" aria-live="polite"></div>
+    </div></section>
+
+    <section class="esc-sec"><div class="envoltura">
+      <h3>Tres tendencias</h3>
+      <p class="intro">Lo que viene, en tres horizontes de tiempo.</p>
+      <ol class="ap-linea">${f.tendencias.map((x, i) => `
+        <li><button class="ap-hito" data-ten="${i}" aria-expanded="${i === 0}"><span class="hz">${esc(x.horizonte)}</span><strong>${esc(x.titulo)}</strong></button></li>`).join("")}</ol>
+      <div id="ap-ten" aria-live="polite"></div>
+    </div></section>
+
+    <section class="esc-sec"><div class="envoltura">
+      <h3>Para conversar en equipo</h3>
+      <div class="notas">${f.preguntas.map((q, i) => `<div class="nota" style="--r:${[-2, 1.5, -1][i % 3]}deg">${esc(q)}</div>`).join("")}</div>
+    </div></section>
+
+    <section class="esc-sec"><div class="envoltura">
+      <h3>En qué escenarios aparece</h3>
+      ${escs.length ? `<div class="ap-escs">${escs.map(e => `<a class="ap-esc" href="#escenario-${e.id}" style="--c:${e.color}"><img src="images/esc-${e.id}.svg" alt=""><span>Escenario ${e.id}</span><strong>${esc(e.titulo)}</strong></a>`).join("")}</div>`
+        : `<p class="intro">Ningún escenario lo tiene como protagonista, pero atraviesa a todos.</p>`}
+      <p class="traz" style="margin-top:22px">Trazabilidad: ${esc(f.traz)}</p>
+    </div></section>
+
+    <div class="envoltura esc-pie">
+      ${prev ? `<button class="btn btn-borde" data-ir-apr="${prev.id}">Aprendizaje ${prev.id}: ${esc(prev.nombre)}</button>` : "<span></span>"}
+      ${sig ? `<button class="btn btn-azul" data-ir-apr="${sig.id}">Aprendizaje ${sig.id}: ${esc(sig.nombre)}</button>` : `<a class="btn btn-azul" href="#escenarios">Ir a los escenarios</a>`}
+    </div>`;
+
+  // el cambio
+  const r = $("#ap-rango", v), de = $(".ap-de", v), ha = $(".ap-hacia", v);
+  const act = () => { const k = +r.value / 100; r.style.setProperty("--v", r.value + "%"); de.style.opacity = 1 - .6 * k; ha.style.opacity = .4 + .6 * k; de.style.transform = `rotate(-1deg) scale(${1 - .06 * k})`; ha.style.transform = `rotate(1deg) scale(${.94 + .06 * k})`; };
+  r.addEventListener("input", act); act();
+  setTimeout(() => animarA(r, 100, act), 700);
+  // insights
+  const verIns = i => {
+    const x = f.insights[i];
+    $$(".ap-tabs button", v).forEach((b, j) => b.setAttribute("aria-selected", j === i));
+    $("#ap-ins", v).innerHTML = `<div class="ap-ins">
+      <div class="ap-ins-txt"><h4>${esc(x.titulo)}</h4><p class="bajada">${esc(x.bajada)}</p><p>${esc(x.cuerpo)}</p></div>
+      <div class="ap-ins-lado">${x.frase ? `<blockquote>${esc(x.frase)}</blockquote>` : ""}<p class="impl"><strong>Implicación estratégica</strong>${esc(x.implicacion)}</p></div></div>`;
+  };
+  verIns(0);
+  // tendencias
+  const verTen = i => {
+    const x = f.tendencias[i];
+    $$(".ap-hito", v).forEach((b, j) => { b.setAttribute("aria-expanded", j === i); b.classList.toggle("on", j <= i); });
+    $("#ap-ten", v).innerHTML = `<div class="ap-ten torn"><span class="hz">${esc(x.horizonte)}</span><h4>${esc(x.titulo)}</h4><p>${esc(x.texto)}</p><p class="impl"><strong>Implicación para el ecosistema</strong>${esc(x.implicacion)}</p></div>`;
+  };
+  verTen(0);
+  v.onclick = e => {
+    const t = e.target.closest("button,a"); if (!t) return;
+    if (t.matches("[data-volver-apr]")) location.hash = "aprendizajes";
+    else if (t.dataset.irApr) location.hash = "aprendizaje-" + t.dataset.irApr;
+    else if (t.dataset.ins) verIns(+t.dataset.ins);
+    else if (t.dataset.ten) verTen(+t.dataset.ten);
+  };
+  $(".ap-tabs", v).addEventListener("keydown", e => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const bs = $$(".ap-tabs button", v), i = bs.findIndex(b => b.getAttribute("aria-selected") === "true");
+    const n = (i + (e.key === "ArrowRight" ? 1 : 2)) % 3; verIns(n); bs[n].focus();
+  });
+  v.classList.add("abierta"); v.scrollTop = 0; document.body.style.overflow = "hidden";
+  $("[data-volver-apr]", v).focus({ preventScroll: true });
 }
 
 /* ---------- Puertas ---------- */
@@ -1655,8 +1817,8 @@ function abrirFuturo(id) {
 
     <section class="esc-sec"><div class="envoltura">
       <h3>Los aprendizajes que lo empujan</h3>
-      <p class="intro">Este escenario nace de ${f.fuerzas.length} de los ocho aprendizajes. Abre cada uno para ver sus insights.</p>
-      <div class="fz-esc">${f.fuerzas.map(n => { const z = fz(n); return `<button data-fuerza="${n}"><strong>${esc(z.nombre)}</strong><span>${esc(z.manana)}</span></button>`; }).join("")}</div>
+      <p class="intro">Este escenario nace de ${f.fuerzas.length} de los ocho aprendizajes. Abre cada uno para ver sus insights y tendencias.</p>
+      <div class="fz-esc">${f.fuerzas.map(n => { const z = fz(n); return `<a href="#aprendizaje-${n}"><span class="fz-n">Aprendizaje ${n}</span><strong>${esc(z.nombre)}</strong><span>${esc(z.manana)}</span></a>`; }).join("")}</div>
     </div></section>
 
     <section class="esc-sec"><div class="envoltura">
@@ -1829,12 +1991,14 @@ function ruta() {
   const h = location.hash.slice(1);
   const m = h.match(/^escenario-(\d)$/);
   if (m) { abrirFuturo(+m[1]); return; }
+  const ma = h.match(/^aprendizaje-(\d)$/);
+  if (ma) { abrirAprendizaje(+ma[1]); return; }
   const estabaAbierta = $("#vista").classList.contains("abierta");
   cerrarFuturo();
   if (h) { const el = document.getElementById(h); if (el) el.scrollIntoView({ behavior: estabaAbierta ? "auto" : "smooth" }); }
   $$(".barra nav a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + h));
 }
-document.addEventListener("keydown", e => { if (e.key === "Escape" && $("#vista").classList.contains("abierta") && !$("dialog[open]")) location.hash = "escenarios"; });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && $("#vista").classList.contains("abierta") && !$("dialog[open]")) location.hash = $("[data-volver-apr]") ? "aprendizajes" : "escenarios"; });
 window.addEventListener("hashchange", ruta);
 
 pintarFuerzas(); pintarPuertas(); pintarLab(); pintarVotos();
